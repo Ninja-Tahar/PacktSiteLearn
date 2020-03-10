@@ -1,0 +1,51 @@
+<?php
+
+
+/**
+ * @file
+ * Selon la taille du module, il est recommandé de placer toutes vos implémentations de hook dans un .module fichier.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function hello_world_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.hello_world':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This is an example module.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Custom submit handlers:
+ * supprimer cet élément et ajouter notre propre fonction, ou simplement ajouter un autre élément à ce tableau
+ *
+ * pour plus de information "https://api.drupal.org/api/drupal/elements/8.7.x ."
+ */
+function my_module_form_salutation_configuration_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Perform alterations. $form['#submit'][] = 'hello_world_salutation_configuration_form_submit';
+}
+/**
+ * Custom submit handler for the form_salutation_configuration form.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function my_module_salutation_configuration_form_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  // Do something when the form is submitted.
+}
+/**
+ * Autre chose sur les formulaire que e peut rendre un form avec un peu de code:
+ *
+ * $builder = \Drupal::formBuilder();
+ * $form = $builder->getForm('Drupal\hello_world\Form\SalutationConfigurationForm');
+ */

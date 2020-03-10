@@ -1,0 +1,20 @@
+# Il est temps de la définir notre class salutation comme un service.
+
+# Il y a essentiellement deux façons - statiquement et injectées de utiliser les services.
+# 1 - Statiquement, vous utiliseriez la Drupal classe globale pour instancier un service:
+#     $service = \Drupal::service('hello_world.salutation');
+
+# 2 - Quelques services populaires ont également des méthodes abrégées sur la \Drupalclasse : par exemple:
+#      \Drupal::entityTypeManager().
+
+services:
+  hello_world.salutation: # nom de service best pratice de commance avec le nom de module.
+    class: Drupal\hello_world\HelloWorldSalutation # mappez à une classe à instancier.
+    arguments: ['@config.factory', '@event_dispatcher'] # le service responsable du chargement des objets de configuration en peut trouver la definnition en core.services.yml file
+
+  hello_world.redirect_subscriber: # Créons cet abonné en écrivant d'abord sa définition de service Apres create la class.
+    class: \Drupal\hello_world\EventSubscriber\HelloWorldRedirectSubscriber
+    arguments: ['@current_user', '@current_route_match']
+    tags:
+      - { name: event_subscriber }
+

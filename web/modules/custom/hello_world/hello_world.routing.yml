@@ -1,0 +1,40 @@
+# Nous devrons créer notre routagefichier qui contiendra tous nos itinéraires définis statiquement.
+
+# Pour plus d'informations sur toutes les options de configuration de l'itinéraire,
+#  visitez la page de documentation appropriée à l'  adresse
+#  https://www.drupal.org/docs/8/api/routing-system/structure-of-routes
+# C'est une bonne ressource à garder sous la main.
+
+#  Il commence par le nom de l'itinéraire ( hello_world.hello).
+#  Path key: qui indique le chemin sur lequel nous voulons que cette route fonctionne.
+#  defaults section: ui contient généralement des informations pertinentes pour les gestionnaires chargés de livrer quelque chose lors de l'accès à cette route.
+#  _controller: Dans notre cas, nous définissons le contrôleur et la méthode responsables de la livraison de la page.
+#  _title: ainsi que son titre.
+# requirements section:  qui a généralement à voir avec les conditions qui doivent être remplies pour que cette route soit accessible (ou soit atteinte) - des choses telles que les autorisations et le format.
+
+#  Une exigence très courante est d’ avoirun paramètre de route variable (ou plus) qui est utilisé par le code qui correspond à la route.
+#  comme ceci: path: '/hello/{param}'  correspondra à une $paramvariable qui sera passée en argument au contrôleur ou au gestionnaire responsable de cette route.
+
+# Par exemple, une entité peut être chargée automatiquement et transmise au contrôleur directement au lieu d'un ID. De plus, si aucune entité n'est trouvée, la route agit comme un 404.
+# options:
+#   parameters:
+#     param:
+#       type: entity:node
+# Nous avons donc mappé le {param} paramètre au type d'entité de nœud. Par conséquent, si l'utilisateur accède à hello/1, le nœud avec l'ID de 1 sera chargé (s'il existe).
+
+# create an page we create route first and after controller.
+hello_world.hello:
+  path: '/hello'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\HelloWorldController::helloWorld'
+    _title: 'Our first route'
+  requirements:
+    _permission: 'access content'
+
+hello_world.greeting_form:
+  path: '/admin/config/salutation-configuration'
+  defaults:
+    _form: '\Drupal\hello_world\Form\SalutationConfigurationForm'
+    _title: 'Salutation configuration'
+  requirements:
+    _permission: 'administer site configuration'
