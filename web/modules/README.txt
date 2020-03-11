@@ -45,4 +45,6 @@ Pour moi
 ----------
 
 - (MailMessage Nr) Chapitre 2 logger or Enregistrement.
--
+- (l' envoiles e-mails Nr)
+- (Modification de email Nr).
+- (custom plugin mail Nr)

@@ -36,5 +36,6 @@ services:
 
   hello_world.logger.hello_world: # save the class as service (MailMessage 3)
     class: Drupal\hello_world\Logger\MailLogger
+    arguments: ['@logger.log_message_parser', '@config.factory'] # (l' envoiles e-mails 3)
     tags:                # Cela l'enregistrera en tant que service spécifique recherché par un autre service (appelé collecteur) . J omme nous avons discuté dans le chapitre précédent. Dans ce cas, le collecteur est LoggingChannelFactory.
       - { name: logger }
