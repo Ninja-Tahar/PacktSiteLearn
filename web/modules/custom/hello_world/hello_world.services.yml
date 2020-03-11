@@ -18,3 +18,23 @@ services:
     tags:
       - { name: event_subscriber }
 
+  hello_world.logger.channel.hello_world: # create une canal (MailMessage 1)
+    parent: logger.channel_base # clé signifie que notre service héritera de la définition d'un autre service. # dans le service logger.channnel_base au fichier core.services.yml nous voyons également une factory clé. Cela signifie que cette classe de service n'est pas instanciée par le conteneur de service mais par un autre service, à savoir la méthode logger.factorydu service get().
+    arguments: ['hello_world']
+
+  # La argumentsclé est également légèrement différente. Tout d'abord, nous n'avons pas le @signe. En effet, ce signe est utilisé pour désigner un nom de service,
+  # alors que notre argument est une simple chaîne. En guise de petit plus, si la chaîne est précédée et suivie d'un %, cela indique un paramètre qui peut être
+  # défini dans n'importe quel *.services.ymlfichier.
+  #
+  # Pour revenir à notre exemple, si vous vous souvenez de la théorie de l'enregistreur, cette définition de service signifie que demander ce service effectuera,
+  # sous le capot, la tâche suivante:
+  #
+  #\Drupal::service('logger.factory')->get('hello_world');
+  #
+  # Il utilise la fabrique d'enregistreurs pour charger un canal avec un certain argument. Donc, maintenant nous pouvons injecter notre
+  # hello_world.logger.channel.hello_worldservice et appeler n'importe laquelle des LoggerInterfaceméthodes directement dans notre code client.
+
+  hello_world.logger.hello_world: # save the class as service (MailMessage 3)
+    class: Drupal\hello_world\Logger\MailLogger
+    tags:                # Cela l'enregistrera en tant que service spécifique recherché par un autre service (appelé collecteur) . J omme nous avons discuté dans le chapitre précédent. Dans ce cas, le collecteur est LoggingChannelFactory.
+      - { name: logger }
