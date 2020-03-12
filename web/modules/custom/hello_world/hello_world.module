@@ -7,6 +7,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Render\BubbleableMetadata;
 
 /**
  * Implements hook_help().
@@ -68,7 +69,10 @@ function hello_world_mail($key, &$message, $params) {
       $message['from'] = \Drupal::config('system.site')->get('mail');
       $message['subject'] = t('There is an error on your website');
       $message['body'][] = $params['message'];
-
+      // (Token 1)
+      $user_message = 'The user that was logged in: [current-user:name].';
+      $message['body'][] = \Drupal::token()->replace($user_message, ['current-user' => \Drupal::currentUser()]);
+      $message['body'][] = \Drupal::token()->replace('The salutation text is: [hello_world:salutation]');
       break;
   }
 }
@@ -85,4 +89,50 @@ function hello_world_mail_alter(&$message) {
       $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
       break;
   }
+}
+
+/**
+ * Implements hook_token_info().
+ *
+ * (Token 2)
+ */
+function hello_world_token_info() {
+  $type = [
+    'name' => t('Hello World'),
+    'description' => t('Tokens related to the Hello World module.'),
+  ];
+
+  $tokens['salutation'] = [
+    'name' => t('Salutation'),
+    'description' => t('The Hello World salutation value.'),
+  ];
+
+  return [
+    'types' => ['hello_world' => $type],
+    'tokens' => ['hello_world' => $tokens],
+  ];
+}
+
+/**
+ * Implements hook_tokens().
+ *
+ * (Token 3)
+ *
+ * pour le utilisier le token voir le hook_world_email() : "$final_string = \Drupal::token()->replace('The salutation text is: [hello_world:salutation]'); "
+ */
+function hello_world_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $replacements = [];
+  if ($type == 'hello_world') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'salutation':
+          $replacements[$original] = \Drupal::service('hello_world.salutation')->getSalutation();
+          $config = \Drupal::config('hello_world.custom_salutation');
+          $bubbleable_metadata->addCacheableDependency($config);
+          break;
+      }
+    }
+  }
+
+  return $replacements;
 }

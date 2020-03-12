@@ -48,3 +48,4 @@ Pour moi
 - (l' envoiles e-mails Nr)
 - (Modification de email Nr).
 - (custom plugin mail Nr)
+- (Token Nr) token 1 utilisier un token apres creaate a new token :))
