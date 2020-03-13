@@ -1,0 +1,14 @@
+<div {{ attributes }}>
+  {{ salutation }}
+  {% if target %}
+    <span class="salutation—target">{{ target }}</span>
+  {% endif %}
+</div>
+
+{#
+(theme 2)
+La notation des rameaux est facile à comprendre. Les {{ }} moyens que nous
+imprimons une variable avec ce nom (qui peut même être un tableau render) et {% %}fait référence pour
+le contrôle des, comme si des déclarations ou des boucles . Consultez la documentation Twig ( https://twig.symfony.com/ )
+pour plus d'informations si vous n'êtes pas sûr.
+#}

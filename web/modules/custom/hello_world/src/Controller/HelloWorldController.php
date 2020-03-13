@@ -42,15 +42,26 @@ class HelloWorldController extends ControllerBase {
     );
   }
 
+//  /**
+//   * Hello World.
+//   *
+//   * @return array
+//   * first time
+//   */
+//  public function helloWorld() {
+//    return [
+//      '#markup' => $this->salutation->getSalutation(),
+//    ];
+//  }
+
   /**
    * Hello World.
    *
    * @return array
+   * (theme 6)
    */
   public function helloWorld() {
-    return [
-      '#markup' => $this->salutation->getSalutation(),
-    ];
+    return $this->salutation->getSalutationComponent();
   }
 
 }
