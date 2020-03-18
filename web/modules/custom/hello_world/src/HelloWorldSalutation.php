@@ -91,17 +91,34 @@ class HelloWorldSalutation {
    * Returns the Salutation render array.
    *
    * (theme 5)
+   *
+   * (lien-contextuels 3)
+   *
+   * nous avons ajouté notre #contextual_linksélément de rendu. Deuxièmement, chaque fois que nous devons définir
+   * la valeur de la chaîne de salutation ci-dessous, nous le faisons dans un #markupélément cette fois, car, comme nous
+   * l'avons vu dans le chapitre précédent, nous avons besoin d'une propriété qui définit la façon dont le tableau de rendu est rendu.
    */
   public function getSalutationComponent() {
     $render = [
       '#theme' => 'hello_world_salutation',
+      '#salutation' => [
+        '#contextual_links' => [
+          'hello_world' => [
+            'route_parameters' => []
+          ],
+        ]
+      ]
     ];
+//    $render = [
+//      '#theme' => 'hello_world_salutation',
+//    ];
+// (theme 5)
 
     $config = $this->configFactory->get('hello_world.custom_salutation');
     $salutation = $config->get('salutation');
 
     if ($salutation != "") {
-      $render['#salutation'] = $salutation;
+      $render['#salutation']['#markup'] = $salutation;
       $render['#overridden'] = TRUE;
       return $render;
     }
@@ -110,17 +127,17 @@ class HelloWorldSalutation {
     $render['#target'] = $this->t('world');
 
     if ((int) $time->format('G') >= 00 && (int) $time->format('G') < 12) {
-      $render['#salutation'] = $this->t('Good morning');
+      $render['#salutation']['#markup'] = $this->t('Good morning');
       return $render;
     }
 
     if ((int) $time->format('G') >= 12 && (int) $time->format('G') < 18) {
-      $render['#salutation'] = $this->t('Good afternoon');
+      $render['#salutation']['#markup'] = $this->t('Good afternoon');
       return $render;
     }
 
     if ((int) $time->format('G') >= 18) {
-      $render['#salutation'] = $this->t('Good evening');
+      $render['#salutation']['#markup'] = $this->t('Good evening');
       return $render;
     }
   }

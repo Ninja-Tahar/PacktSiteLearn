@@ -1,0 +1,21 @@
+# Créons maintenant un lien vers ce chemin qui va à l'intérieur du menu principal fourni  avec le noyau Drupal.
+# les liens de menu sont définis dans un *.links.menu.yml fichier.
+# Dans une notation YAML typique, nous avons le nom de la machine (dans ce cas, également l'ID du plugin) hello_world.hello,
+
+# Une propriété commune supplémentaire est parentcelle qui peut être utilisée pour  indiquer un autre lien
+#  de menu dont le lien actuel devrait être un enfant. En tant que tel, vous pouvez créer la hiérarchie.
+
+# Notez que les liens créés à la suite de dérivés de plug-in, tels que ceux créés dans l'interface utilisateur, ont des noms de machine (ID de plug-in) au format suivant:
+# main_plugin_id:plugin_derivative_id
+
+# L' main_plugin_idID est le plugin de lien de menu qui est responsable de la dérivation de plusieurs liens,
+# tandis que plugin_derivative_idl'ID est attribué à chaque dérivé individuel. Par exemple, dans le cas d' MenuLinkContententités, le format est le suivant:
+# menu_link_content:867c544e-f1f7-43aa-8bf7-22fcb08a4b50
+
+# (lien-home-hello)
+hello_world.hello:
+  title: 'Hello'
+  description: 'Get your dynamic salutation.'
+  route_name: hello_world.hello  #  indique le menu dans lequel il doit se trouver; c'est le nom de la machine du menu.
+  menu_name: main
+  weight: 0

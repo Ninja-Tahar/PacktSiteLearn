@@ -1,0 +1,19 @@
+# Définition des actions locales
+#
+# Rien sur notre module Hello Worldappelle à définir un lien d'action locale. Donc, au lieu de le faire, examinons celui qui a du sens. Si vous accédez à
+# l' admin/contentécran, vous verrez le + Add contentbouton. Il ressemble exactement à l'exemple que nous avons vu précédemment sur la page de gestion des utilisateurs.
+# Il s'agit d'un lien d'action locale pour cette route. Le +style indique que ces liens sont principalement utilisés pour ajouter ou créer de nouveaux éléments pertinents pour l'itinéraire actuel.
+#
+# Ce lien d'action locale particulier est défini dans le nodemodule à l'intérieur du node.links.action.ymlfichier, et il ressemble à ceci:
+#
+# node.add_page:
+#   route_name: node.add_page
+#   title: 'Add content'
+#   appears_on:
+#     - system.admin_content
+#
+# Encore une fois, nous avons le nom de la machine (ID du plugin) et la définition. J'espère que route_nameet titlesont, maintenant, clair pour vous.
+# Une nouveauté ici, cependant, est la appears_onclé utilisée pour indiquer les routes (pluriel) sur lesquelles ce lien d'action doit apparaître.
+# Ainsi, une caractéristique clé est qu'un lien d'action peut exister sur plusieurs pages.
+#
+# (lien-action)

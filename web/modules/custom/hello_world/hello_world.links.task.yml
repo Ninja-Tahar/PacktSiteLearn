@@ -1,0 +1,12 @@
+#  Comme je l'ai mentionné, les tâches locales vont dans un *.links.task.ymlfichier.
+
+# (lien-taches-local)
+hello_world.page:
+  route_name: hello_world.hello
+  title: 'Hello World'
+  base_route: hello_world.hello
+hello_world.config:
+  route_name: hello_world.greeting_form
+  title: 'Configuration'
+  base_route: hello_world.hello # est l'itinéraire sur lequel la tâche locale doit apparaître.
+  weight: 100

@@ -50,3 +50,7 @@ Pour moi
 - (custom plugin mail Nr)
 - (Token Nr) token 1 utilisier un token apres creaate a new token :))
 - (theme Nr)
+- (lien-home-hello) creation de lien de menu
+- (lien-taches-local) creation de lien de taches local
+- (lien-action) Définition des actions locales
+- (lien-contextuels Nr) Définition de liens contextuels

@@ -1,0 +1,7 @@
+# Tout d'abord, nous devrons créer le .links.contextual.ymlfichier et définir le lien:
+
+# (lien-contextuels 1)
+hello_world.override:
+  title: 'Override'
+  route_name: hello_world.greeting_form
+  group: hello_world  # qui indique le nom du groupe dont ce lien fera partie.

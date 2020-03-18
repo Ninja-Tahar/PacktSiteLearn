@@ -1,8 +1,10 @@
 <div {{ attributes }}>
-  {{ salutation }}
-  {% if target %}
-    <span class="salutation—target">{{ target }}</span>
-  {% endif %}
+    {{ title_prefix }}
+    {{ salutation }}
+    {% if target %}
+        <span class="salutation—target">{{ target }}</span>
+    {% endif %}
+    {{ title_suffix }}
 </div>
 
 {#
@@ -11,4 +13,11 @@ La notation des rameaux est facile à comprendre. Les {{ }} moyens que nous
 imprimons une variable avec ce nom (qui peut même être un tableau render) et {% %}fait référence pour
 le contrôle des, comme si des déclarations ou des boucles . Consultez la documentation Twig ( https://twig.symfony.com/ )
 pour plus d'informations si vous n'êtes pas sûr.
+#}
+{#
+(lien-contextuels 2)
+Ensuite, nous devrons modifier notre fichier de modèle de hook de thème car les liens contextuels sont imprimés dans une
+title_suffixvariable disponible dans tous les hooks de thème et utilisée par divers modules pour ajouter des données diverses aux modèles.
+Le module contextuel en est un exemple. Nous devrons donc faire imprimer cela. Voici à quoi cela ressemblera maintenant:
+ {{ title_prefix }}  {{ title_suffix }}
 #}
