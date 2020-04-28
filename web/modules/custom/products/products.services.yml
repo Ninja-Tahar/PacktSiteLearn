@@ -1,0 +1,5 @@
+# (1.2) étant donné que cetteest un service, nous devrons l'enregistrer comme tel dans le products.services.ymlfichier:
+services:
+  products.importer_manager:
+    class: Drupal\products\Plugin\ImporterManager
+    parent: default_plugin_manager
