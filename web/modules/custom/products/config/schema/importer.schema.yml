@@ -23,3 +23,16 @@ products.importer.*:
     source:
       type: string
       label: The source of the products
+
+products.product_type.*:
+  type: config_entity
+  label: 'Product type config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string

@@ -53,7 +53,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *   },
  *   links = {
  *     "canonical" = "/admin/structure/product/{product}",
- *     "add-form" = "/admin/structure/product/add",
+ *     "add-form" = "/admin/structure/product/add/{product_type}",
  *     "edit-form" = "/admin/structure/product/{product}/edit",
  *     "delete-form" = "/admin/structure/product/{product}/delete",
  *     "collection" = "/admin/structure/product",
