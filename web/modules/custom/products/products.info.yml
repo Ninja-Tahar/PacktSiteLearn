@@ -1,7 +1,0 @@
-# Si le products module a été activé sur votre site avant d'écrire tout le code d'entité, vous devrez exécuter la drush entity-updatescommande
-#  pour que toutes les tables nécessaires soient créées dans la base de données. Sinon, l'installation du module le fera automatiquement.
-
-name: Products
-description: A module that stores product information imported from various sources
-core: 8.x
-type: module
