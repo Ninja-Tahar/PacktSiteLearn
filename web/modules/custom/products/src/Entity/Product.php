@@ -187,7 +187,7 @@ class Product extends ContentEntityBase implements ProductInterface {
 
     /**
      * Par exemple, si nous voulons que le champ source apparaisse comme widget de formulaire, tout ce que nous avons à faire est de changer sa définition de champ de base en ceci:
-     * 
+     *
      * ->setDisplayOptions('form', [
      *          'type' => 'string_textfield',
      *           'weight' => -4,

@@ -1,0 +1,5 @@
+#  (plugin personnalisé 1.1). étant donné que cetteest un service, nous devrons l'enregistrer comme tel dans le products.services.ymlfichier:
+services:
+  products.importer_manager:
+    class: Drupal\products\Plugin\ImporterManager
+    parent: default_plugin_manager # Comme vous pouvez le voir, nous héritons des dépendances (arguments) du default_plugin_managerservice au lieu de les dupliquer ici à nouveau. Si vous vous souvenez du chapitre 3 , Journalisation et envoi , c'est une petite astuce intéressante dans Drupal 8.
