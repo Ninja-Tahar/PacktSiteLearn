@@ -1,0 +1,6 @@
+# (entity 4.3).  nous voulons également un lien d'action pour créer une nouvelle entité produit
+entity.importer.add_form:
+  route_name: 'entity.product.add_form'
+  title: 'Add Product'
+  appears_on:
+    - entity.product.collection

@@ -1,0 +1,7 @@
+# Product entity menu items (entity 4.1). Cela définit un lien de menu sous le Structurelien pour la liste de produits (la page construite avec notre gestionnaire de création de liste).
+entity.product.collection:
+  title: 'Product list'
+  route_name: entity.product.collection
+  description: 'List Product entities'
+  parent: system.admin_structure
+  weight: 100
