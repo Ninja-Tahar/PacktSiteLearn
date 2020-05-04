@@ -1,8 +1,9 @@
 <?php
 /**
  * (entity 3)
+ *
  *générateur de liste
- * Passons maintenant à l' annotation du plugin de type e ntity et créons les gestionnaires auxquels nous avons fait référence
+ * Passons maintenant à l' annotation du plugin de type entity et créons les gestionnaires aux quels nous avons fait référence
  *
  * Le but de ce gestionnaire est de créer la page d'administration qui répertorie les entités disponibles.
  */
