@@ -4,6 +4,7 @@
  *
  * Nous étendons  directementEntityForm dans ce cas parce que les entités de configuration n'ont pas de classe de formulaire spécifique comme les entités de contenu.
  * Pour cette raison, nous devons également implémenter les éléments de formulaire pour tous nos champs à l'intérieur de la form()méthode.
+ * 
  */
 
 namespace Drupal\products\Form;
